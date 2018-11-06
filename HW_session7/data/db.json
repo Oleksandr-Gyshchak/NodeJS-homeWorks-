@@ -1,0 +1,79 @@
+{
+  "user": {
+    "id": 1,
+    "firstName": "Dave",
+    "lastName": "Gamache",
+    "description": " I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.",
+    "friends": "12",
+    "enemies": "1"
+  },
+  "about": {
+    "wentTo": "Oh, Canada",
+    "Became_friends_with": "Obama",
+    "worked_at": "Github",
+    "lives_in": "San Francisco,CA",
+    "from": "Seattle, WA"
+  },
+  "posts": [{
+      "id": 1,
+      "firstName": "Dave",
+      "lastName": "Gamache",
+      "description": "Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+      "publishedDate": "1522702730438",
+      "avatar": "img/main/avatar-dhg.png",
+      "images": [
+        "img/main/unsplash_1.jpg",
+        "img/main/instagram_1.jpg",
+        "img/main/instagram_13.jpg",
+        "img/main/unsplash_2.jpg"
+      ],
+      "comments": [{
+          "autor": {
+            "firstName": "Jacon",
+            "lastName": "Thornton"
+          },
+          "avatar": "img/main/avatar-fat.jpg",
+          "comment": "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis."
+        },
+        {
+          "autor": {
+            "firstName": "Mark",
+            "lastName": "Otto"
+          },
+          "avatar": "img/main/avatar-mdo.png",
+          "comment": "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "firstName": "Jacon",
+      "lastName": "Thornton",
+      "description": "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.",
+      "publishedDate": "1522902739438",
+      "avatar": "img/main/avatar-fat.jpg",
+      "images": []
+    },
+    {
+      "id": 3,
+      "firstName": "Mark",
+      "lastName": "Otto",
+      "description": "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.",
+      "publishedDate": "1527702730438",
+      "avatar": "img/main/avatar-mdo.png",
+      "images": [
+        "img/main/instagram_3.jpg"
+      ],
+      "comments": [{
+        "autor": {
+          "firstName": "Dave",
+          "lastName": "Gamache"
+        },
+        "avatar": "img/main/avatar-dhg.png",
+        "comment": "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis."
+      }]
+    }
+
+  ]
+
+}
