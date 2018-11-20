@@ -1,5 +1,6 @@
 var UserPostModel = require('../models/postUser.model');
 var userInfo = require('../data/mock-data').userInfo;
+var mongoose = require('mongoose');
 
 const createPost = function (req, res) {
     let postText = req.body.text;
@@ -33,6 +34,7 @@ const getPostlist = function (req, res) {
         },
         function (err, postList) {
             if (err) {
+                console.log(err);
                 res.status(404).json({
                     error: err.message
                 })
@@ -44,6 +46,7 @@ const getPostlist = function (req, res) {
 function saveToDB(postText, filePath, userInfo, res) {
 
     let postItem = {
+        _id: new mongoose.Types.ObjectId(),
         text: postText,
         picture: filePath,
         publicationDate: Date.now(),
