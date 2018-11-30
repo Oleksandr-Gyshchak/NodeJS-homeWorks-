@@ -7,7 +7,6 @@ const createComment = function (req, res) {
     let postId = req.body.postId;
 
     let comentItem = {
-        _id: new mongoose.Types.ObjectId(),
         text: commentText,
         postId: postId,
         publicationDate: Date.now(),
@@ -27,7 +26,11 @@ const createComment = function (req, res) {
 
 
 const getCommentslist = function (req, res) {
-    CommentModel.find({},
+    let postid = {
+        postId: req.params.postId
+    }
+
+    CommentModel.find(postid,
         '', {
             sort: {
                 publicationDate: -1

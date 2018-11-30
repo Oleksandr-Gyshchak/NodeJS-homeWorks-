@@ -36,7 +36,7 @@ const getPostlist = function (req, res) {
         function (err, postList) {
             if (err) {
                 console.log(err);
-                res.status(404).json({
+                res.status(401).json({
                     error: err.message
                 })
             };

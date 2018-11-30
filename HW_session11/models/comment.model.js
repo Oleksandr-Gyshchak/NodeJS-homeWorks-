@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userPostSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     postId: String,
     text: {
         type: String,
