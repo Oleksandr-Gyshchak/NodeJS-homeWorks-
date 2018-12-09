@@ -4,6 +4,7 @@ var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 
 const secretWord = 'sercretWordForDecoding';
+
 const createUser = function (req, res) {
 
     let userItem = {
@@ -21,7 +22,7 @@ const createUser = function (req, res) {
     User.save(function (err, userItem) {
         if (err) {
             console.log(err);
-            res.status(401).json({
+            res.status(500).json({
                 error: err.message
             })
         };
@@ -38,7 +39,7 @@ function validateUser(req, res) {
         if (err) throw err;
 
         if (!user) {
-            return res.status(401).send({
+            return res.status(400).send({
                 success: false,
                 msg: "User not found"
             })
@@ -50,9 +51,6 @@ function validateUser(req, res) {
                     var token = jwt.sign(user.toObject(), secretWord, {
                         expiresIn: '1d'
                     });
-                    console.log(token);
-                    // verifyToken(token);
-                    //editUser(token, req, res)
 
                     return res.status(200).json({
                         success: true,
@@ -60,7 +58,7 @@ function validateUser(req, res) {
                     })
                 }
 
-                res.status(401).json({
+                res.status(400).json({
                     success: false,
                     msg: 'Wrong password'
                 })
@@ -68,50 +66,6 @@ function validateUser(req, res) {
         )
     })
 }
-
-function editUser(token, req, res) {
-
-    UserModel.findOneAndUpdate({
-            username: req.body.username
-        }, {
-            token: token
-        },
-        function (err, userItem) {
-            if (err) {
-                res.status(401);
-            }
-
-            //res.json(userItem);
-            return res.status(200).json({
-                success: true,
-                token: "JWT " + token
-            })
-
-
-        });
-}
-
-
-
-function setTokenToUser(token, req, res) {
-
-
-
-
-}
-
-function verifyToken(token) {
-    jwt.verify(token, secretWord, function (err, decoded) {
-        if (err) {
-            console.error('err: ', err);
-        } else {
-            console.log('decoded: ', decoded);
-        }
-    });
-
-}
-
-
 
 
 module.exports = {

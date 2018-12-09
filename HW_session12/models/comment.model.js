@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var userPostSchema = new Schema({
+var commentSchema = new Schema({
     postId: String,
     text: {
         type: String,
@@ -17,6 +17,25 @@ var userPostSchema = new Schema({
 
 });
 
-var UserComment = mongoose.model('UserComment', userPostSchema, 'comments_list');
+commentSchema.statics.findComments = function (query, callback) {
+    return this.find(query)
+        .populate('author', [
+            "fullName",
+            "avatar"
+        ])
+        .sort({
+            publicationDate: -1
+        })
+        .lean()
+        .exec(callback);
+
+
+
+}
+
+
+
+
+var UserComment = mongoose.model('UserComment', commentSchema, 'comments_list');
 
 module.exports = UserComment;

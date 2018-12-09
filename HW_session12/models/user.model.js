@@ -13,14 +13,14 @@ var UserSchema = new Schema({
     username: {
         type: String,
         required: [
-            true, 'username is required'
+            true, 'Username is required'
         ],
     },
     passwordRememberMe: String,
     password: {
         type: String,
         required: [
-            true, 'password is required'
+            true, 'Password is required'
         ],
     },
     createdDate: Date,

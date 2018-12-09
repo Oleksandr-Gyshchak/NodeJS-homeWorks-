@@ -3,7 +3,6 @@ var CommentModel = require('../models/comment.model');
 var mongoose = require('mongoose');
 
 const createPost = async function (req, res, next) {
-
     try {
         let postItem = {
             _id: new mongoose.Types.ObjectId(),
@@ -15,9 +14,7 @@ const createPost = async function (req, res, next) {
 
         const createdPost = await PostModel.create(postItem);
 
-        res.status(201).json({
-            createdPost
-        });
+        res.status(201).json(createdPost);
 
     } catch (err) {
         return next(err);
@@ -27,67 +24,17 @@ const createPost = async function (req, res, next) {
 
 
 const getPostlist = async function (req, res, next) {
-    let pageLimit = 4
-
     try {
-        const postList = await PostModel.find({})
-            .populate('author', ["fullName", "avatar"])
-            .sort({
-                publicationDate: -1
-            })
-            .limit(pageLimit)
-            .lean()
-            .exec()
-
+        const postList = await PostModel.getPosts();
         setEditable(postList, req);
-
-        const modelLength = await PostModel.estimatedDocumentCount();
-        let totalPages = Math.ceil(modelLength / pageLimit);
-        console.log(
-            'totalPages :', totalPages,
-            'page', 1
-
-        )
 
         res.status(200).json(postList);
     } catch (err) {
         return next(err);
     }
-
 }
 
 
-function setPagination() {
-    /*
-
-    npm install mongoose-paginate-v2
-    
-        const options = {
-            page: 1,
-            limit: 10
-        };
-         
-        Model.paginate({}, options, function(err, result) {
-            // result.docs
-            // result.totalDocs = 100
-            // result.limit = 10
-            // result.page = 1
-            // result.totalPages = 10    
-            // result.hasNextPage = true
-            // result.nextPage = 2
-            // result.hasPrevPage = false
-            // result.prevPage = null
-            
-        });
-    */
-
-}
-
-function setEditable(postList, req) {
-    postList.forEach(post => {
-        post.editable = post.author._id.toString() === req.user._id.toString()
-    });
-}
 
 function findOnePost(req, res) {
     let conditionQuery = {
@@ -153,7 +100,7 @@ function checkUserPermission(req, res, next) {
 
     PostModel.findById(postId, function (err, postItem) {
         if (err) {
-            res.status(404).json({
+            res.status(500).json({
                 error: err.message
             })
         }
@@ -169,6 +116,12 @@ function checkUserPermission(req, res, next) {
         }
     });
 
+}
+
+function setEditable(postList, req) {
+    postList.forEach(post => {
+        post.editable = post.author._id.toString() === req.user._id.toString()
+    });
 }
 
 

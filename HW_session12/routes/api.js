@@ -32,7 +32,7 @@ router.delete('/posts/:postId/', checkPermission, postController.removePost);
 
 
 router.patch('/posts/:postId/', checkPermission, saveImg, postController.editPost);
-router.get('/posts/:postId/comments', commentControler.findComments);
+router.get('/posts/:postId/comments', commentControler.getCommentsByPostId);
 router.post('/posts/:postId/comments/', commentControler.createComment);
 router.get('/posts/:postId/comments/:commentid', commentControler.findById);
 

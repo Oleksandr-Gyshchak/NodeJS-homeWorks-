@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 */
 
 app.use(function (err, req, res, next) {
-    console.error(err.stack);
+    console.error(err.message);
     res.status(err.status || 500).json({
         error: err.message
     });
