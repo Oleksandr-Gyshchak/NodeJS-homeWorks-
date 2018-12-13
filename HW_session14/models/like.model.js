@@ -3,20 +3,12 @@ var Schema = mongoose.Schema;
 
 var likeSchema = new Schema({
     postId: {
-        type: String,
-        min: 1,
-        max: 60,
-        required: [
-            true, 'postId is required'
-        ]
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserPost'
     },
     userId: {
-        type: String,
-        min: 1,
-        max: 60,
-        required: [
-            true, 'userId is required'
-        ]
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 

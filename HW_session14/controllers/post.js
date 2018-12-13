@@ -44,9 +44,9 @@ const getPostlist = async function (req, res, next) {
 
 const setLikesNumberAndIsLiked = function (postList, likeslist, currentUserId) {
     postList.forEach(postItem => {
-        const likesListIds = likeslist.filter(like => like.postId == postItem._id);
+        const likesListIds = likeslist.filter(like => like.postId.toString() == postItem._id);
         const isLikedPost = likeslist.some(function (like) {
-            return like.postId == postItem._id &&
+            return like.postId.toString() == postItem._id &&
                 like.userId == currentUserId.toString()
         });
 
@@ -140,9 +140,9 @@ const setLikeOrDislikeForPost = async function (req, res, next) {
             userId: req.user._id
         };
 
-        const isPostLiked = await LikesModel.findOne(likeItem);
+        const likedPosts = await LikesModel.findOne(likeItem);
 
-        if (isPostLiked) {
+        if (!!likedPosts) {
             const deletedLike = await LikesModel.findOneAndDelete(likeItem);
             res.status(201).json(deletedLike);
         } else {
@@ -156,8 +156,7 @@ const setLikeOrDislikeForPost = async function (req, res, next) {
 }
 
 const getLikedPostsById = async function (postList) {
-
-    const postIdList = postList.map(item => item._id)
+    const postIdList = postList.map(item => item._id);
 
     let query = {
         postId: {
