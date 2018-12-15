@@ -20,7 +20,8 @@ var commentSchema = new Schema({
 commentSchema.statics.findComments = function (query, callback) {
     return this.find(query)
         .populate('author', [
-            "fullName",
+            "firstName",
+            "lastName",
             "avatar"
         ])
         .sort({

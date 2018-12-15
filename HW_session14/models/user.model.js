@@ -4,10 +4,16 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    fullName: {
+    firstName: {
         type: String,
         required: [
-            true, 'Name is required'
+            true, 'FirstName is required'
+        ],
+    },
+    lastName: {
+        type: String,
+        required: [
+            true, 'LastName is required'
         ],
     },
     username: {
@@ -16,20 +22,22 @@ var UserSchema = new Schema({
             true, 'Username is required'
         ],
     },
-    passwordRememberMe: String,
     password: {
         type: String,
         required: [
             true, 'Password is required'
         ],
     },
+    email: {
+        type: String
+    },
+    description: {
+        type: String
+    },
     createdDate: Date,
     avatar: String,
     last_updated: Date
-
-
 });
-
 
 UserSchema.pre('save', function (next) {
     this.last_updated = Date.now();
@@ -59,6 +67,10 @@ UserSchema.pre('save', function (next) {
         next();
     }
 })
+
+
+
+
 
 UserSchema.methods.comparePassword = function (passw, cb) {
     bcrypt.compare(

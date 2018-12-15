@@ -16,9 +16,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let actualPosts = [];
 
+
     init();
 
     function init() {
+        getAndBuildPostsAndComments();
+        initListeners();
+    }
+
+    function getAndBuildPostsAndComments() {
         if (localStorage.getItem('token') || localStorage.getItem('current_user_id')) {
             body.classList.remove('hide');
 
@@ -55,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     actualPosts = response;
                     renderPosts(actualPosts);
                     renderComments(actualPosts);
-                    initListeners();
+
                 })
                 .catch(e => console.log(e));
 
@@ -69,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderPosts(posts) {
         feed.innerText = '';
-
         posts.forEach(post => {
             feed.innerHTML += (post.editable) ?
                 `<li class="rv b agz">
@@ -77,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="rw">
                 <div class="bpb">
                   <small class="acx axc">${moment(post.publicationDate).fromNow()}</small>
-                  <h6><a href="/profile?id=${post.author._id}">${post.author.fullName}</a></h6>
+                  <h6><a href="/profile?id=${post.author._id}">${post.author.firstName} ${post.author.lastName}</a></h6>
                 </div>
     
                 <p>${post.text}
@@ -121,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="rw">
                 <div class="bpb">
                   <small class="acx axc">${moment(post.publicationDate).fromNow()}</small>
-                  <h6><a href="/profile?id=${post.author._id}">${post.author.fullName}</a></h6>
+                  <h6><a href="/profile?id=${post.author._id}">${post.author.firstName} ${post.author.lastName}</a></h6>
                 </div>
     
                 <p>${post.text}
@@ -193,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                     <div class="bpd">
                                                         <div class="bpb">
                                                             <small class="acx axc">${moment(comment.publicationDate).fromNow()}</small>
-                                                            <h6><a href="/profile?id=${comment.author._id}">${comment.author.fullName}</a></h6>
+                                                            <h6><a href="/profile?id=${comment.author._id}">${comment.author.firstName} ${comment.author.lastName}</a></h6>
                                                         </div>
                                                         <div class="bpb">
                                                         ${comment.text}
@@ -399,6 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const id = event.target.getAttribute("data-id");
 
         const apiToken = localStorage.getItem('token');
+
         const headers = new Headers();
         headers.append('Authorization', apiToken);
 
@@ -452,7 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         })
                         .then(() => {
                             postPublishEdit.removeEventListener('click', publishHandler);
-                            init();
+                            getAndBuildPostsAndComments();
                         });
                 };
 
@@ -482,7 +488,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.status === 401) window.location = '/login';
                 return response;
             })
-            .then(() => init())
+            .then(() => getAndBuildPostsAndComments())
 
     }
 
@@ -504,7 +510,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.status === 403) window.location = '/login';
                 return response;
             })
-            .then(() => init())
+            .then(() => getAndBuildPostsAndComments())
     }
 
     function editCommentListener(event) {
@@ -550,7 +556,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         })
                         .then(() => {
                             commentPublishEdit.removeEventListener('click', editCommentHandler);
-                            init();
+                            getAndBuildPostsAndComments();
                         });
                 };
 
@@ -577,7 +583,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.status === 403) window.location = '/login';
                 return response;
             })
-            .then(() => init())
+            .then(() => getAndBuildPostsAndComments())
     }
 
     function createPostListener() {
@@ -616,6 +622,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     postPublishCreate.removeEventListener('click', createHandler);
                     postTextCreate.value = '';
                     postAttachCreate.value = '';
+                    getAndBuildPostsAndComments();
                 });
         };
         postPublishCreate.addEventListener('click', createHandler);
@@ -663,7 +670,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(() => {
                     commentPublish.removeEventListener('click', createHandler);
                     commentText.value = '';
-                    init();
+                    getAndBuildPostsAndComments();
                 });
         };
 

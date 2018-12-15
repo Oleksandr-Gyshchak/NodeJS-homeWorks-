@@ -24,7 +24,7 @@ var userPostSchema = new Schema({
 
 userPostSchema.statics.getPosts = async function (callback) {
     return this.find({})
-        .populate('author', ["fullName", "avatar"])
+        .populate('author', ["firstName", "lastName", "avatar"])
         .sort({
             publicationDate: -1
         })

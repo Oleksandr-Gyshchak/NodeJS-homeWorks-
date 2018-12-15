@@ -13,25 +13,28 @@ const createUser = function (req, res) {
 
     let userItem = {
         _id: new mongoose.Types.ObjectId(),
-        createdDate: Date.now(),
-        fullName: req.body.fullName,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         username: req.body.username,
         password: req.body.password,
-        passwordRememberMe: req.body.password,
-        token: null,
-        avatar: '/assets/img/avatar-mdo.png'
+        email: req.body.email,
+        description: req.body.description,
+        avatar: '/assets/img/avatar-mdo.png',
+        createdDate: Date.now()
     };
 
     let User = new UserModel(userItem);
     User.save(function (err, userItem) {
         if (err) {
-            console.log(err);
             res.status(500).json({
                 error: err.message
             })
         };
 
-        res.status(201).json(userItem);
+        res.status(201).json({
+            success: true,
+            msg: userItem
+        });
     });
 
 };
@@ -80,13 +83,7 @@ const getUserProfile = async function (req, res, next) {
         const userProfile = await UserModel.findOne(conditionQuery).lean();
 
         const userAdditionalInfo = await getUserAdditionalInfo(req.params.userId);
-
-
-        userProfile.postsNumber = userAdditionalInfo.userPostCount;
-        userProfile.likesNumber = userAdditionalInfo.userLikesCount;
-        userProfile.commentsNumber = userAdditionalInfo.userCommentCount;
-        userProfile.commentsAVG = userAdditionalInfo.commentsAVG;
-        userProfile.editable = userProfile._id == req.user._id;
+        setUserAdditionalInfo(userProfile, userAdditionalInfo, req.user._id);
 
         res.status(200).json(userProfile)
 
@@ -97,8 +94,7 @@ const getUserProfile = async function (req, res, next) {
 
 const getUserAdditionalInfo = async function (userID) {
     const userInfo = {};
-
-    let conditionQuery = {
+    const conditionQuery = {
         'author': userID
     };
 
@@ -113,7 +109,6 @@ const getUserAdditionalInfo = async function (userID) {
     userInfo.userLikesCount = userLikesCount;
     userInfo.commentsAVG = userLikesCount / userPostCount;
 
-
     return userInfo;
 }
 
@@ -123,9 +118,42 @@ const getCurrentUserProfile = function (req, res, next) {
     getUserProfile(req, res, next);
 }
 
+const editUser = async function (req, res, next) {
+
+    try {
+        let conditionQueryForEdit = {
+            _id: req.params.userId
+        };
+
+        let editFields = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            username: req.body.username,
+            email: req.body.email,
+            description: req.body.description,
+            avatar: '/assets/img/avatar-mdo.png',
+        };
+
+        const userItem = await UserModel.findOneAndUpdate(conditionQueryForEdit, editFields);
+
+        res.status(201).json(userItem);
+    } catch (err) {
+        return next(err);
+    }
+}
+
+function setUserAdditionalInfo(userProfile, userAdditionalInfo, currentUserId) {
+    userProfile.postsNumber = userAdditionalInfo.userPostCount;
+    userProfile.likesNumber = userAdditionalInfo.userLikesCount;
+    userProfile.commentsNumber = userAdditionalInfo.userCommentCount;
+    userProfile.commentsAVG = userAdditionalInfo.commentsAVG;
+    userProfile.editable = userProfile._id.toString() === currentUserId.toString();
+}
+
 module.exports = {
     createUser,
     validateUser,
     getUserProfile,
-    getCurrentUserProfile
+    getCurrentUserProfile,
+    editUser
 };

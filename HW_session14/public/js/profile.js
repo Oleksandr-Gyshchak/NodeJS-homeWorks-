@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function renderUserProfile(profile) {
         console.log(profile)
         profileDescription.innerText = profile.description;
-        profileFullName.innerText = `${profile.fullName}`;
+        profileFullName.innerText = `${profile.firstName} ${profile.lastName}`;
         profileImg.setAttribute('src', profile.avatar);
         profileLogin.innerText = profile.username;
         profileEmail.innerText = profile.email;
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append('email', emailInput.value);
         formData.append('description', descriptionInput.value);
 
-        fetch(userProfileUrl, {
+        fetch(`${userProfileUrl}/${currentUserId}`, {
                 method: 'POST',
                 body: formData,
                 headers: headers

@@ -1,9 +1,13 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     const loginUrl = '/login-api/signup';
 
-    const fullName = document.getElementById('fullName');
     const userName = document.getElementById('username');
-    const passWord = document.getElementById('password') ;
+    const passWord = document.getElementById('password');
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const email = document.getElementById('email');
+    const description = document.getElementById('description');
+
     const singup = document.getElementById('singup');
     const growl = document.getElementById('app-growl');
 
@@ -12,14 +16,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
         event.preventDefault();
 
         let formData = new FormData();
-        formData.append('fullName', fullName.value);
         formData.append('username', userName.value);
         formData.append('password', passWord.value);
+        formData.append('email', email.value);
+        formData.append('description', description.value);
+        formData.append('firstName', firstName.value);
+        formData.append('lastName', lastName.value);
+
 
         fetch(loginUrl, {
-            method: 'POST',
-            body: formData
-        })
+                method: 'POST',
+                body: formData
+            })
             .then((response) => response.json())
             .then((response) => {
                 if (response.success) {
@@ -32,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     setTimeout(() => {
                         growl.innerHTML = '';
                         window.location = '/login'
-                    }, 2*1000);
+                    }, 2 * 1000);
                 } else {
                     let growlBody = document.createElement('div');
                     growlBody.classList.add('alert', 'alert-dark', 'alert-dismissible', 'fade', 'show');
@@ -43,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
                     setTimeout(() => {
                         growl.innerHTML = '';
-                    }, 2*1000);
+                    }, 2 * 1000);
                 }
             })
             .catch(e => console.error(e));

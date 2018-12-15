@@ -44,7 +44,9 @@ router.delete('/posts/:postId/comments/:commentid', commentControler.deleteComme
 router.post('/likes', postController.setLikeOrDislikeForPost);
 
 router.get('/user-profile', userControler.getCurrentUserProfile);
+
 router.get('/user-profile/:userId', userControler.getUserProfile);
+router.post('/user-profile/:userId', userControler.editUser);
 
 
 module.exports = router;
