@@ -1,0 +1,227 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <title>
+      
+        Profile &middot; Application theme &middot; Official Bootstrap Themes
+      
+    </title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="/assets/css/toolkit.css" rel="stylesheet">
+    
+    <link href="/assets/css/application.css" rel="stylesheet">
+
+    <style>
+      /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+      /* this chunk of css is not part of the toolkit :) */
+      body {
+        width: 1px;
+        min-width: 100%;
+        *width: 100%;
+      }
+    </style>
+
+  </head>
+
+
+<body class="bob">
+
+
+    <div class="bon" id="app-growl"></div>
+
+    <nav class="ck pt adq py tk app-navbar">
+
+      <a class="e" href="/">
+        <img src="/assets/img/brand-white.png" alt="brand">
+      </a>
+
+      <button
+        class="pp bpn vm"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="pq"></span>
+      </button>
+
+          <div class="collapse f" id="navbarResponsive">
+            <ul class="navbar-nav ahq">
+              <li class="pi">
+                <a class="pg" href="/">Home <span class="adt">(current)</span></a>
+              </li>
+              <li class="pi active">
+                <a class="pg" id="profile-link">Profile</a>
+              </li>
+              <!--<li class="pi vm">-->
+                <!--<a class="pg" href="/notifications">Notifications</a>-->
+              <!--</li>-->
+              <li class="pi vm">
+                <a class="pg" data-action="growl">Growl</a>
+              </li>
+              <li class="pi vm">
+                <a class="pg" href="/login">Logout</a>
+              </li>
+
+            </ul>
+
+
+            <ul id="#js-popoverContent" class="nav navbar-nav acx aek d-none vt">
+              <!--<li class="pi">-->
+                <!--<a class="g pg" href="/notifications">-->
+                  <!--<span class="h azy"></span>-->
+                <!--</a>-->
+              <!--</li>-->
+              <li class="pi afb">
+                <button class="cg bpo bpp boi" data-toggle="popover">
+                  <img class="us" id="profile-ico">
+                </button>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav d-none" id="js-popoverContent">
+              <li class="pi"><a class="pg" href="/login">Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+
+    <div class="pz bpi afo">
+        <div class="qf" style="background-image: url(/assets/img/iceland.jpg);"></div>
+        <div class="qa avz">
+                <img class="bpj" id="profile-img">
+
+
+            <h6 class="qb">
+                <span id="profile"></span>
+            </h6>
+
+            <p class="afo" id="profile-description"></p>
+
+        </div>
+    </div>
+    <div class="pz vp vy afo" id="view-block">
+        <div class="qa qqq">
+            <h6 class="afh">About
+                <small>&nbsp;&nbsp;&nbsp; <a href="#" id="edit-button">Edit</a></small>
+            </h6>
+            <ul class="dc axg">
+                <li><span class="axc h bnb aff"></span><strong>Login: </strong><span id="profile-login"></span></li>
+                <li><span class="axc h bdo aff"></span><strong>E-mail: </strong><span id="profile-email"></span></li>
+                <li><span class="axc h bhk aff"></span><strong>First Name: </strong><span id="profile-first-name"></span></li>
+                <li><span class="axc h bnd aff"></span><strong>Last Name: </strong><span id="profile-last-name"></span></li>
+            </ul>
+            <hr>
+            <h6 class="afh">Статистика пользователя
+            </h6>
+            <ul class="dc axg">
+                <li><span class="axc h bip aff"></span><strong>Количество постов: </strong><span id="profile-posts-number"></span></li>
+                <li><span class="axc h bhu aff"></span><strong>Количество комментариев: </strong><span id="profile-comments-number"></span></li>
+                <li><span class="axc h bmc aff"></span><strong>Количество лайков: </strong><span id="profile-likes-number"></span></li>
+                <li><span class="axc h baq aff"></span><strong>Среднее значение количества комментов для поста: </strong><span id="profile-comments-avg"></span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pz vp vy afo" id="edit-block">
+        <ul class="bow cj ca qqq">
+            <li class="b">
+                <div class="rv ady">
+                    <div class="rw yd">
+                        <strong>Login:</strong>
+                    </div>
+                    <div class="rw yd">
+                        <input type="text" class="form-control" placeholder="Login" id="login-input">
+                    </div>
+                </div>
+            </li>
+            <li class="b">
+                <div class="rv ady">
+                    <div class="rw yd">
+                        <strong>E-mail:</strong>
+                    </div>
+                    <div class="rw yd">
+                        <input type="text" class="form-control" placeholder="E-mail" id="email-input">
+                    </div>
+                </div>
+            </li>
+            <li class="b">
+                <div class="rv ady">
+                    <div class="rw yd">
+                        <strong>Password:</strong>
+                    </div>
+                    <div class="rw yd">
+                        <input type="text" class="form-control" placeholder="Password" id="password-input">
+                    </div>
+                </div>
+            </li>
+            <li class="b">
+                <div class="rv ady">
+                    <div class="rw yd">
+                        <strong>First Name:</strong>
+                    </div>
+                    <div class="rw yd">
+                        <input type="text" class="form-control" placeholder="First Name" id="first-name-input">
+                    </div>
+                </div>
+            </li>
+            <li class="b">
+                <div class="rv ady">
+                    <div class="rw yd">
+                        <strong>Last Name:</strong>
+                    </div>
+                    <div class="rw yd">
+                        <input type="text" class="form-control" placeholder="Last Name" id="last-name-input">
+                    </div>
+                </div>
+            </li>
+            <li class="b">
+                <div class="rv ady">
+                    <div class="rw yd">
+                        <strong>Story:</strong>
+                    </div>
+                    <div class="rw yd">
+                        <textarea type="text" class="form-control" placeholder="Message" id="description-input"></textarea>
+                    </div>
+                </div>
+            </li>
+
+            <li class="b">
+                <div class="rv ady">
+                    <div class="rw yd">
+                        <button class="cg nz ok acx" id="submit-button">
+                            <span class="h bkf"></span> Сохранить
+                        </button>
+                        <button class="cg nz ok acx" id="cancel-button">
+                            <span class="h baa"></span> Отменить
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/chart.js"></script>
+    <script src="/assets/js/toolkit.js"></script>
+    <script src="/assets/js/application.js"></script>
+    <script>
+      // execute/clear BS loaders for docs
+      $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+    </script>
+    <script src="/js/profile.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <title>
+
+        Home &middot; Application theme &middot; Official Bootstrap Themes
+
+    </title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="/assets/css/toolkit.css" rel="stylesheet">
+
+    <link href="/assets/css/application.css" rel="stylesheet">
+
+    <style>
+        /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+        /* this chunk of css is not part of the toolkit :) */
+        body {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+        }
+
+        .bao:before {
+            content: "\EB13";
+        }
+
+        .no-border {
+            border: 0;
+        }
+
+    </style>
+
+</head>
+
+
+<body class="bob hide" id="body">
+
+
+<div class="bon" id="app-growl"></div>
+
+<nav class="ck pt adq py tk app-navbar">
+
+    <a class="e" href="/">
+        <img src="/assets/img/brand-white.png" alt="brand">
+    </a>
+    <button
+            class="pp bpn vm"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="pq"></span>
+    </button>
+
+    <div class="collapse f" id="navbarResponsive">
+        <ul class="navbar-nav ahq">
+            <li class="pi active">
+                <a class="pg" href="/">Home <span class="adt">(current)</span></a>
+            </li>
+            <li class="pi">
+                <a class="pg profile-url" href="/profile">Profile</a>
+            </li>
+
+            <li class="pi vm">
+                <a class="pg" href="/notifications">Notifications</a>
+            </li>
+            <li class="pi vm">
+                <a class="pg" data-action="growl">Growl</a>
+            </li>
+            <li class="pi vm">
+                <a class="pg" href="#" id="logout">Logout</a>
+            </li>
+
+        </ul>
+
+        <form class="nn acx d-none vt" id="search-form">
+            <input class="form-control" type="text" data-action="grow" placeholder="Search" id="search-input">
+        </form>
+
+        <ul id="#js-popoverContent" class="nav navbar-nav acx aek d-none vt">
+            <li class="pi" id="logout-box">
+                <a class="g pg" href="#">
+                    <span class="h azy" id="logout"></span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav d-none" id="js-popoverContent">
+            <li class="pi"><a class="pg" href="#" data-action="growl">Growl</a></li>
+            <li class="pi"><a class="pg" href="#">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="cd fade" id="postModalCreate" tabindex="-1" role="dialog" aria-labelledby="bpr" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="d">
+                <h4 class="modal-title" id="postTitleCreate">Create post</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body afx">
+                <div class="axw">
+                    <ul class="bow cj ca">
+                        <li class="b">
+                            <textarea type="text" class="form-control" placeholder="Message" id="postTextCreate"></textarea>
+                        </li>
+                        <li class="b">
+                            <img
+                                style="display: inline-block; width: 208px; height: 201px; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;"
+                                src="https://via.placeholder.com/346x335.png"
+                                id="postImageCreate"
+                            >
+                        </li>
+                        <li class="b">
+                            <input type="file" class="form-control" placeholder="Message" id="postAttachCreate">
+                        </li>
+                        <li class="b">
+                            <button class="cg nz ok" id="postPublishCreate" data-dismiss="modal">Опубликовать</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cd fade" id="postModalEdit" tabindex="-1" role="dialog" aria-labelledby="bpr" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="d">
+                <h4 class="modal-title" id="postTitleEdit">Edit post</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body afx">
+                <div class="axw">
+                    <ul class="bow cj ca">
+                        <li class="b">
+                            <textarea type="text" class="form-control" placeholder="Message" id="postTextEdit"></textarea>
+                        </li>
+                        <li class="b">
+                            <img
+                                    style="display: inline-block; width: 208px; height: 201px; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;"
+                                    src="/assets/img/instagram_3.jpg"
+                                    id="postImageEdit"
+                            >
+                        </li>
+                        <li class="b">
+                            <input type="file" class="form-control" placeholder="Message" id="postAttachEdit">
+                        </li>
+                        <li class="b">
+                            <button class="cg nz ok" id="postPublishEdit" data-dismiss="modal">Опубликовать</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cd fade" id="postModalComment" tabindex="-1" role="dialog" aria-labelledby="bpr" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="d">
+                <h4 class="modal-title">Создать комментарий</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body afx">
+                <div class="axw">
+                    <ul class="bow cj ca">
+                        <li class="b">
+                            <textarea type="text" class="form-control" placeholder="Message" id="commentText"></textarea>
+                        </li>
+                        <li class="b">
+                            <button class="cg nz ok" id="commentPublish" data-dismiss="modal">Опубликовать</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cd fade" id="postModalCommentEdit" tabindex="-1" role="dialog" aria-labelledby="bpr" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="d">
+                <h4 class="modal-title">Редактировать комментарий</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body afx">
+                <div class="axw">
+                    <ul class="bow cj ca">
+                        <li class="b">
+                            <textarea type="text" class="form-control" placeholder="Message" id="commentTextEdit"></textarea>
+                        </li>
+                        <li class="b">
+                            <button class="cg nz ok" id="commentPublishEdit" data-dismiss="modal">Опубликовать</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="by aha ahl" >
+    <div class="dp">
+        <div class="fj">
+            <div class="pz bpi afo">
+                <div class="qf" style="background-image: url(/assets/img/iceland.jpg);"></div>
+                <div class="qa avz">
+                    <a href="/profile" class="profile-url">
+                        <img
+                            class="bpj"
+                            id="profile-img"
+                            src="/assets/img/avatar-dhg.png"
+                        >
+                    </a>
+
+                    <h6 class="qb">
+                        <a class="boa profile-url" href="/profile" id="profile">Dave Gamache</a>
+                    </h6>
+
+                    <p class="afo" id="profile-description">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="fm">
+            <ul class="ca bow box afo">
+                <li class="rv b agz">
+                    <a href="#postModalCreate" class="boa" data-toggle="modal">
+                        <button class="cg nz ok" id="createPost">Создать пост</button>
+                    </a>
+                </li>
+            </ul>
+            <ul class="ca bow box afo" id="feed">
+            </ul>
+            <ul class="ca bow box afo" id="load-more-box">
+                <li class="rv b agz">
+                    <a class="boa">
+                        <button class="cg nz ok" id="load-more-button">Загрузить еще</button>
+                    </a>
+                </li>
+            </ul>
+            <ul class="ca bow box afo hide" id="go-top-box">
+                <li class="rv b agz">
+                    <a class="boa">
+                        <!--<button class="cg nz ok" id="go-top-button"></button>-->
+                        <button class="cg nz ok"  title="Вверх" id="go-top-button">
+                            <span class="h ayt"></span> Вверх
+                        </button>
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+        <div class="fj">
+            <div class="alert ro alert-dismissible d-none vy" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <a class="rj" href="/profile">Visit your profile!</a> Check your self, you aren't looking well.
+            </div>
+
+
+            <div class="pz bpm">
+                <div class="qa">
+                    © 2018 JSExpert
+                    <a href="https://www.jsexpert.net/" target="_blank">JSExpert Homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/ru.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/chart.js"></script>
+<script src="/assets/js/toolkit.js"></script>
+<!--<script src="/assets/js/application.js"></script>-->
+<script src="/js/homepage.js"></script>
+<script>
+    // execute/clear BS loaders for docs
+    $(function () {
+        while (window.BS && window.BS.loader && window.BS.loader.length) {
+            (window.BS.loader.pop())()
+        }
+    })
+</script>
+</body>
+</html>
+
